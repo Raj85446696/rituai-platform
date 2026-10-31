@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  background: #0b1220;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0b1220;
+}
+
+@media (pointer: fine) {
+  body:has(.custom-cursor),
+  body:has(.custom-cursor) a,
+  body:has(.custom-cursor) button {
+    cursor: none;
+  }
+}

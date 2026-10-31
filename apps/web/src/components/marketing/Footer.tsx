@@ -1,0 +1,11 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { GitBranch, Zap } from "lucide-react";
+
+const columns = [["Product", "Features", "Status", "Roadmap"], ["Resources", "Docs", "Blog", "Changelog"], ["Company", "About", "Privacy", "Contact"]];
+
+export function Footer() {
+  const reduced = useReducedMotion();
+  return <footer className="border-t border-white/10"><motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: .6 }} className="mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)] lg:px-8"><div><motion.a href="#" whileHover={reduced ? undefined : { x: 3 }} className="flex items-center gap-2 font-semibold text-white"><motion.span whileHover={reduced ? undefined : { rotate: 12 }} className="grid size-7 place-items-center rounded-lg bg-blue-500/15 text-blue-400"><Zap size={14} fill="currentColor" /></motion.span>RituAI</motion.a><p className="mt-4 max-w-xs text-sm leading-6 text-slate-500">Build. Ship. Monitor. Improve.<br />The workspace for modern engineering teams.</p></div>{columns.map(([title, ...items], columnIndex) => <motion.div key={title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ delay: reduced ? 0 : columnIndex * .1 }}><h3 className="text-sm font-semibold text-white">{title}</h3><div className="mt-4 space-y-3">{items.map((item, itemIndex) => <motion.a href="#" key={item} initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: reduced ? 0 : columnIndex * .1 + itemIndex * .05 }} whileHover={reduced ? undefined : { x: 4, color: "#e2e8f0" }} className="block text-sm text-slate-500 transition">{item}</motion.a>)}</div></motion.div>)}</motion.div><div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/10 px-5 py-6 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between lg:px-8"><p>© 2026 RituAI. All rights reserved.</p><motion.a href="https://github.com" aria-label="RituAI on GitHub" whileHover={reduced ? undefined : { scale: 1.15, rotate: 8 }} className="text-slate-500 hover:text-white"><GitBranch size={16} /></motion.a></div></footer>;
+}
