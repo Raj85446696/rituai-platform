@@ -1,0 +1,6 @@
+aws_region       = ""
+project_name     = ""
+key_name         = ""
+allowed_ssh_cidr = ""
+db_username      = ""
+db_password      = ""
