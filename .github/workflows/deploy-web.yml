@@ -3,7 +3,10 @@ name: deploy-web
 on:
   push:
     branches: [dev, main]
-    paths: ["apps/web/**"]
+    paths:
+      - "apps/web/**"
+      - ".github/workflows/deploy-web.yml"
+  workflow_dispatch:
 
 permissions:
   id-token: write
